@@ -1,0 +1,40 @@
+#version: '3.5'
+
+services:
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:5.2.0
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - kafka_net
+
+  broker:
+    image: confluentinc/cp-kafka:5.2.0
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+      - kafka_net
+
+  kafdrop:
+    image: thomsch98/kafdrop
+    depends_on:
+      - zookeeper
+    ports:
+    - "9010:9010"
+    environment:
+    - "ZK_HOSTS=zookeeper:2181"
+    - "LISTEN=9010"
+    networks:
+      - kafka_net
+
+networks:
+  kafka_net:
+    external: false
+    name: kafka_net

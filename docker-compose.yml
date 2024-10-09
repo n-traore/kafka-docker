@@ -1,0 +1,33 @@
+#version: '3.5'
+
+services:
+
+  spotify-producer:
+    build: ./spotify-producer
+    environment:
+      KAFKA_BROKER_URL: ${KAFKA_BROKER_URL}
+      SPOTIFY_TOPIC: ${SPOTIFY_TOPIC}
+      CLIENT_ID: ${CLIENT_ID}
+      CLIENT_SECRET: ${CLIENT_SECRET}
+      REDIRECT_URI: ${REDIRECT_URI}
+      SPOTIFY_PLAYLISTS: ${SPOTIFY_PLAYLISTS}
+      SPOTIFY_TOKEN_URL: ${SPOTIFY_TOKEN_URL}
+      SPOTIFY_API_BASE_URL: ${SPOTIFY_API_BASE_URL}
+      API_VERSION: ${API_VERSION}
+      ENDPOINT_TO_REACH: ${ENDPOINT_TO_REACH}
+      GRANT_TYPE: ${GRANT_TYPE}
+    networks:
+      - kafka_net
+
+  spotify-consumer:
+    build: ./spotify-consumer
+    environment:
+      KAFKA_BROKER_URL: ${KAFKA_BROKER_URL}
+      SPOTIFY_TOPIC: ${SPOTIFY_TOPIC}
+      CASSANDRA_CLUSTER_IPS: ${CASSANDRA_CLUSTER_IPS}
+    networks:
+      - kafka_net
+
+networks:
+  kafka_net:
+    external: true
