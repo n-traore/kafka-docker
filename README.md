@@ -1,6 +1,7 @@
 Set up a `Kafka` cluster with Zookeeper, to handle streaming data. It uses a Cassandra database as a sink, but you could easily modify this part.
 
-![kafka-spotify](https://github.com/user-attachments/assets/d6a1a4b1-33cc-476d-a34b-41325bde66a4)
+![image](https://github.com/user-attachments/assets/7756442d-5300-4c9d-b4c4-5064c5958060)
+
 
 ## Setup
 
@@ -60,8 +61,9 @@ This will run on the foreground so you can see the messages arrive on the consol
 
 You can view the cluster in UI with kafdrop by going to [http://localhost:9010](http://localhost:9010)  
 
-![image](https://github.com/user-attachments/assets/ef51539e-98c3-440d-a565-27c7231dc442)
-![image](https://github.com/user-attachments/assets/4a0d7b83-f00b-4fb9-8462-01dfb0ee5184)
+![image](https://github.com/user-attachments/assets/4e8365b1-79a7-4dda-942b-581dccf4bb6f)
+![image](https://github.com/user-attachments/assets/f70896e0-9620-4cb8-9143-75682b2a7318)
+
 
 
 ### 6. Clean-up
