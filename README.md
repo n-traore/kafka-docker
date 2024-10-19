@@ -7,8 +7,7 @@ Set up a `Kafka` cluster with Zookeeper, to handle streaming data. It uses a Cas
 
 ### 1. Clone the repo and go to the kafka folder
 ```bash
-git clone https://github.com/n-traore/private-dockerfile-compose-examples.git && \
-cd private-dockerfile-compose-examples/kafka/kafka-spotify
+git clone https://github.com/n-traore/kafka-docker.git && cd kafka-docker
 ```
 
 ### 2. Run this command so your .env is not commited to version control
